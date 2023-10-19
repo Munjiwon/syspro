@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+
+int main(int argc, char *argv[])
+{
+    char savedText[10][100]={'\0'};
+    int fd;
+    char buf;
+
+    if ((fd = open(argv[1], O_RDWR)) == -1) {
+        printf("파일 열기 오류\n");
+        exit(2);
+    }
+
+    for(int i=0;i<4;i++){
+        for(int j=0;j<100;j++){
+            read(fd,&buf,1);
+            savedText[i][j]=buf;
+            if(buf=='\n'){
+                break;
+            }
+            else if(buf=='.'){
+                savedText[i][j+1]='\n';
+                break;
+            }
+        }
+    }
+    for(int i=3;i>=0;i--){
+        printf("%s",savedText[i]);
+    }
+    printf("\n");
+    close(fd);
+    exit(0);
+}
