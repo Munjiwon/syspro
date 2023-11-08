@@ -1,0 +1,10 @@
+mandotory.txt
+student.h
+test.txt
+wrlockf
+wrlockf.c
+mandotory.txt
+student.h
+test.txt
+wrlockf
+wrlockf.c
